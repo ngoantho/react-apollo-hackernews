@@ -20,7 +20,7 @@ import { AUTH_TOKEN } from "./constants";
 const HOST = 'react-apollo-hackernews-server-349911687871.us-west1.run.app';
 const PORT = 4000;
 const httpLink = createHttpLink({
-  uri: `http://${HOST}:${PORT}/graphql`
+  uri: `https://${HOST}:${PORT}/graphql`
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -34,7 +34,7 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const wsLink = new GraphQLWsLink(createClient({
-  url: `ws://${HOST}:${PORT}/graphql`,
+  url: `wss://${HOST}:${PORT}/graphql`,
   connectionParams: () => {
     const token = localStorage.getItem(AUTH_TOKEN);
     return {

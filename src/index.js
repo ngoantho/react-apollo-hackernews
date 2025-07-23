@@ -17,8 +17,8 @@ import {
 } from '@apollo/client';
 import { AUTH_TOKEN } from "./constants";
 
-const HOST = process.env.HOST || 'localhost';
-const PORT = process.env.PORT || 4000;
+const HOST = 'react-apollo-hackernews-server-349911687871.us-west1.run.app';
+const PORT = 4000;
 const httpLink = createHttpLink({
   uri: `http://${HOST}:${PORT}/graphql`
 });

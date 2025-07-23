@@ -17,8 +17,10 @@ import {
 } from '@apollo/client';
 import { AUTH_TOKEN } from "./constants";
 
+const HOST = process.env.HOST || 'localhost';
+const PORT = process.env.PORT || 4000;
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/graphql'
+  uri: `http://${HOST}:${PORT}/graphql`
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -32,7 +34,7 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const wsLink = new GraphQLWsLink(createClient({
-  url: 'ws://localhost:4000/graphql',
+  url: `ws://${HOST}:${PORT}/graphql`,
   connectionParams: () => {
     const token = localStorage.getItem(AUTH_TOKEN);
     return {
